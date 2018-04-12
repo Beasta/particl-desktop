@@ -35,7 +35,7 @@ exports.get = function () {
       files = files.stdout.split('\n');
       // keep only wallet.dat and wallet_xxxx.dat files
       files = files.filter(file => /(wallet\.dat|wallet_.+\.dat)/.test(file));
-      log.debug('found wallets: ' + files);
+      log.info('found wallets: ' + files);
       // TODO: add wallets to the list for later use (restart, update)
       resolve(files);
 

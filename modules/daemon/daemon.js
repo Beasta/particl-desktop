@@ -24,11 +24,11 @@ exports.restart = function (cb) {
   restarting = true;
 
   return exports.stop().then(function waitForShutdown() {
-    log.debug('waiting for daemon shutdown...')
+    log.info('waiting for daemon shutdown...')
 
     exports.check().then(waitForShutdown).catch((err) => {
       if (err.status == 502) { /* daemon's net module shutdown  */
-        log.debug('daemon stopped network, waiting 10s before restarting...');
+        log.info('daemon stopped network, waiting 10s before restarting...');
         setTimeout(() => {     /* wait for full daemon shutdown */
 
           exports.start(chosenWallets, cb)
@@ -155,13 +155,13 @@ exports.stop = function() {
           log.error('Calling SIGINT!');
           reject();
         } else {
-          log.debug('Daemon stopping gracefully...');
+          log.info('Daemon stopping gracefully...');
           resolve();
         }
       });
     } else
     {
-        log.debug('Daemon not managed by gui.');
+        log.info('Daemon not managed by gui.');
         resolve();
         electron.app.quit();
     }

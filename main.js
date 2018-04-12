@@ -38,8 +38,8 @@ if (app.getVersion().includes('RC'))
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   log.info('app ready')
-  log.debug('argv', process.argv);
-  log.debug('options', options);
+  log.info('argv', process.argv);
+  log.info('options', options);
   initMainWindow();
   init.start(mainWindow);
 });

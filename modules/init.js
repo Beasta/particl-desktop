@@ -44,7 +44,7 @@ daemonManager.on('status', (status, msg) => {
 
   // Done -> means we have a binary!
   if (status === 'done') {
-    log.debug('daemonManager returned successfully, starting daemon!');
+    log.info('daemonManager returned successfully, starting daemon!');
     multiwallet.get()
     // TODO: activate for prompting wallet
     // .then(wallets       => ipc.promptWalletChoosing(wallets, mainWindow.webContents))
@@ -71,7 +71,7 @@ daemonManager.on('status', (status, msg) => {
       });
     }
 
-    log.debug('daemonManager errored: ' + msg);
+    log.info('daemonManager errored: ' + msg);
   }
 
 });
@@ -90,5 +90,5 @@ electron.app.on('before-quit', function beforeQuit(event) {
 });
 
 electron.app.on('quit', (event, exitCode) => {
-  log.debug('doedoe');
+  log.info('doedoe');
 });

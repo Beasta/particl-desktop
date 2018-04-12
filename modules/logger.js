@@ -33,8 +33,8 @@ exports.init = function () {
 
   log.daemon = log.info;
 
-  log.debug(`console log level: ${log.transports.console.level}`);
-  log.debug(`file log level: ${log.transports.file.level}`);
+  log.info(`console log level: ${log.transports.console.level}`);
+  log.info(`file log level: ${log.transports.file.level}`);
 
   return log;
 }

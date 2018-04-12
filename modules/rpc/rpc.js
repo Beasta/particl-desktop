@@ -49,9 +49,9 @@ exports.call = function(method, params, callback) {
     method: method,
     params: params
   });
-  
+
   if(spyOnRpc) {
-    log.debug('rpc.call:', postData);
+    log.info('rpc.call:', postData);
   }
 
   if (!rpcOptions) {

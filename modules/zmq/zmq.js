@@ -11,7 +11,7 @@ const SPY_ON_ZMQ = true;
 let mainReference = null;
 
 exports.init = function (mainWindow) {
-    /* 
+    /*
         Store a reference of the main window (electron),
         which we need for rx-ipc-electron (need to get webContents).
     */
@@ -24,24 +24,24 @@ exports.init = function (mainWindow) {
     TODO (maybe): promise structure?
 */
 exports.send = function(subchannel, ...data) {
-    log.debug(" [rm] sending zmq coolaid from node -> angular");
+    log.info(" [rm] sending zmq coolaid from node -> angular");
     try {
       rxIpc.runCommand(ZMQ_CHANNEL, mainReference.webContents, subchannel, ...data)
         .subscribe(
         (returnData) => {
             if(SPY_ON_ZMQ) {
-                log.debug('zmq.send: ', returnData);
+                log.info('zmq.send: ', returnData);
             }
         },
         (error) => {
           log.error("zmq.send: subchan: " + subchannel + " data: " + data + " error: " + err);
         },
         () => {
-          log.debug("completed!");
+          log.info("completed!");
         }
         );
     } catch (error) {
-      log.debug("zmq.send: failed to runCommand (maybe window closed): " + error);
+      log.info("zmq.send: failed to runCommand (maybe window closed): " + error);
     }
 
   }

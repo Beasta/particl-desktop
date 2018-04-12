@@ -142,9 +142,9 @@ class DaemonManager extends EventEmitter {
 
         return new Q((resolve) => {
 
-          log.debug('New client binaries config found, asking user if they wish to update...');
+          log.info('New client binaries config found, asking user if they wish to update...');
 
-          log.debug('skipping ask user because Electron is not yet linked for that');
+          log.info('skipping ask user because Electron is not yet linked for that');
           this._writeLocalConfig(latestConfig);
           resolve(latestConfig);
 
@@ -293,13 +293,13 @@ class DaemonManager extends EventEmitter {
     // TODO: emit to GUI
 
   _emit(status, msg) {
-    log.debug(`Status: ${status} - ${msg}`);
+    log.info(`Status: ${status} - ${msg}`);
     this.emit('status', status, msg);
   }
 
 
   _resolveBinPath() {
-    log.debug('Resolving path to client binary ...');
+    log.info('Resolving path to client binary ...');
 
     let platform = process.platform;
 
@@ -310,7 +310,7 @@ class DaemonManager extends EventEmitter {
       platform = 'mac';
     }
 
-    log.debug(`Platform: ${platform}`);
+    log.info(`Platform: ${platform}`);
 
     let binPath = path.join(app.getPath('userData'), 'particld', 'unpacked', 'particld');
 
@@ -318,7 +318,7 @@ class DaemonManager extends EventEmitter {
       binPath += '.exe';
     }
 
-    log.debug(`Client binary path: ${binPath}`);
+    log.info(`Client binary path: ${binPath}`);
 
     this._availableClients.particld = {
       binPath
