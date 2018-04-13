@@ -2,6 +2,7 @@ const fs   = require('fs');
 const os   = require('os');
 const path = require('path');
 const log  = require('electron-log');
+let cookieCount = 0;
 
 /*
 ** returns Particl config folder
@@ -106,7 +107,14 @@ function getAuth(options) {
     auth = fs.readFileSync(COOKIE_FILE, 'utf8').trim();
   } else {
     auth = undefined;
-    log.info('could not find cookie file! path:', COOKIE_FILE);
+    cookieCount++;
+    if (cookieCount === 4) {
+      log.info('more than 4 cookies errors stop loggin');
+    } else if(cookieCount < 4) {
+      log.info('could not find cookie file! path:', COOKIE_FILE);
+    } else {
+      // do nothing
+    }
   }
 
   return (auth)
