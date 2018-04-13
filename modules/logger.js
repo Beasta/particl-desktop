@@ -16,6 +16,7 @@ exports.init = function () {
     .findLogPath(log.transports.file.appName)
     .replace('log.log', logPath);
 
+   options.verbose=1;
   switch (options.verbose) {
     case 1:
       log.transports.console.level = 'debug';

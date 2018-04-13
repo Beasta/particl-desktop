@@ -7,8 +7,8 @@ import { map, catchError } from 'rxjs/operators';
 
 import { IpcService } from '../ipc/ipc.service';
 
-const MAINNET_PORT = 51735;
-const TESTNET_PORT = 51935;
+const MAINNET_PORT = 51473;
+const TESTNET_PORT = 51473;
 const HOSTNAME = 'localhost';
 
 declare global {

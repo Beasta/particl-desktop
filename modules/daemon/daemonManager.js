@@ -312,8 +312,14 @@ class DaemonManager extends EventEmitter {
 
     log.info(`Platform: ${platform}`);
 
-    let binPath = path.join(app.getPath('userData'), 'particld', 'unpacked', 'particld');
+    // let binPath = path.join(app.getPath('userData'), 'particld', 'unpacked', 'particld');
 
+    log.debug(`Platform: ${platform}`);
+    // binPath /Users/barryblaha/Library/Application Support/Particl Desktop/particld/unpacked/particld
+    // /Users/barryblaha/Downloads/macos10.13
+    // let binPath = path.join(app.getPath('userData'), 'particld', 'unpacked', 'particld');
+    let binPath = '/Users/barryblaha/Downloads/macos10.13/divid'
+    console.log('binPath',binPath);
     if (platform === 'win') {
       binPath += '.exe';
     }

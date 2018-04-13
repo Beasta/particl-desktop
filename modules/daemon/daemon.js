@@ -56,13 +56,19 @@ exports.start = function (wallets, callback) {
     }).catch(() => {
 
       let options      = _options.get();
-      const daemonPath = options.customdaemon
-                       ? options.customdaemon
-                       : daemonManager.getPath();
-
+      // const daemonPath = options.customdaemon
+      //                  ? options.customdaemon
+      //                  : daemonManager.getPath();
+const daemonPath = '/Users/barryblaha/Downloads/macos10.13/divid'
       wallets = wallets.map(wallet => `-wallet=${wallet}`);
+      // process.argv=[];
+      // process.argv.push('server');
+      // process.argv.push('debug');
+      // process.argv.push('rpcconnect=127.0.0.1');
+      // process.argv.push('rpcport=51473');
+      // process.argv.push('rpcpassword=DPKVP6xZxfi2T58Vobu6MQVDqPC5xfj4wfgjA3KbXatS');
+      // prcoess.argv.push('rpcpassword=divirpc');
       log.info(`starting daemon ${daemonPath} ${process.argv} ${wallets}`);
-
       const child = spawn(daemonPath, [...process.argv, ...wallets])
       .on('close', code => {
         daemon = undefined;
