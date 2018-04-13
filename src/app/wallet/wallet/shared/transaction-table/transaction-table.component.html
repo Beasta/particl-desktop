@@ -80,7 +80,7 @@
             <span class="big number">{{ tx.getAmountObject().getIntegerPart() }}</span><!-- inline element comment hack
             --><span class="point">{{ tx.getAmountObject().dot() }}</span><!--
             --><small class="small number">{{ tx.getAmountObject().getFractionalPart() || '' }}</small>
-            <span class="currency">PART</span>
+            <span class="currency">DIVI</span>
           </span>
         </span>
       </mat-panel-title>
@@ -110,12 +110,12 @@
         <!-- TX fee (detail) -->
         <div class="tx-detail-item text-right" fxFlex>
           <span>Fee:</span>
-          <span class="mat-right">{{tx.fee ? tx.fee : 0}} PART</span>
+          <span class="mat-right">{{tx.fee ? tx.fee : 0}} DIVI</span>
         </div>
         <!-- Net amount (detail) -->
         <div class="tx-detail-item text-right" fxFlex>
           <span>Net amount:</span>
-          <span class="mat-right">{{ tx.getNetAmount()}} PART</span>
+          <span class="mat-right">{{ tx.getNetAmount()}} DIVI</span>
         </div>
       </div>
 

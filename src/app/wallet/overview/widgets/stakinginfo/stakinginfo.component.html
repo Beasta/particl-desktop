@@ -7,23 +7,23 @@
       <li><a href="javascript:void(0)"><span class="icon fa fa-cog color-green"></span></a></li>
     </ul-->
   </app-header>
-  <mat-card>
-    <table class="staking-overview">
-      <tr>
-        <th>Next reward</th>
-        <td>~{{expectedtime.getShortReadableDuration()}}</td>
-      </tr>
-      <tr>
-        <th>Your Stake weight</th>
-        <!-- (your weight) / (network weight) * 1000 -->
-        <td>{{ownPercentageOfActiveStakingSupply.getIntegerPart()}}.<small>{{ownPercentageOfActiveStakingSupply.getFractionalPart()}}</small>&nbsp;&permil;</td>
-      </tr>
-      <tr>
-        <th>Stake percentage</th>
-        <td>{{curStakeReward.getIntegerPart()}}.<small>{{curStakeReward.getFractionalPart()}}</small>&nbsp;%</td>
-      </tr>
-    </table>
-    <!-- .staking-overview -->
-  </mat-card>
+  <!--<mat-card>-->
+    <!--<table class="staking-overview">-->
+      <!--<tr>-->
+        <!--<th>Next reward</th>-->
+        <!--<td>~{{expectedtime.getShortReadableDuration()}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th>Your Stake weight</th>-->
+        <!--&lt;!&ndash; (your weight) / (network weight) * 1000 &ndash;&gt;-->
+        <!--<td>{{ownPercentageOfActiveStakingSupply.getIntegerPart()}}.<small>{{ownPercentageOfActiveStakingSupply.getFractionalPart()}}</small>&nbsp;&permil;</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th>Stake percentage</th>-->
+        <!--<td>{{curStakeReward.getIntegerPart()}}.<small>{{curStakeReward.getFractionalPart()}}</small>&nbsp;%</td>-->
+      <!--</tr>-->
+    <!--</table>-->
+    <!--&lt;!&ndash; .staking-overview &ndash;&gt;-->
+  <!--</mat-card>-->
 </div>
 <!-- .staking-info -->

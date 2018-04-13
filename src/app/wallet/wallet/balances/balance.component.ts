@@ -41,11 +41,11 @@ export class BalanceComponent implements OnInit, OnDestroy {
       case 'total_balance':
         return 'TOTAL BALANCE';
       case 'balance':
-        return 'PUBLIC BALANCE';
+        return 'BALANCE';
       case 'anon_balance':
-        return 'PRIVATE BALANCE';
+        return 'BALANCE';
       case 'blind_balance':
-        return 'BLIND BALANCE';
+        return 'BALANCE';
       case 'staked_balance':
         return 'STAKE';
     }
