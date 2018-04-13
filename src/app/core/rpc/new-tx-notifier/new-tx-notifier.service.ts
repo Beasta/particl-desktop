@@ -36,7 +36,8 @@ export class NewTxNotifierService implements OnDestroy {
     const options = {
       'count': 10
     };
-    this._rpc.call('filtertransactions', [options])
+    // this._rpc.call('filtertransactions', [options])
+    this._rpc.call('listtransactions')
       .subscribe(
       (txs: Array<any>) => {
 

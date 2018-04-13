@@ -126,10 +126,11 @@ export class TransactionService implements OnDestroy {
     Object.keys(this.filters).map(filter => options[filter] = this.filters[filter]);
 
     this.log.d(`loadTransactions, call filtertransactions: ${JSON.stringify(options)}`);
-    this.rpc.call('filtertransactions', [options])
+    // this.rpc.call('filtertransactions', [options])
+    this.rpc.call('listtransactions')
       .subscribe(
       (txResponse: Array<Object>) => {
-
+console.log('listtransactions',txResponse);
         // The callback will send over an array of JSON transaction objects.
         this.log.d(`loadTransactions, supposedly tx per page: ${this.MAX_TXS_PER_PAGE}`);
         this.log.d(`loadTransactions, real tx per page: ${txResponse.length}`);
@@ -166,7 +167,8 @@ export class TransactionService implements OnDestroy {
     };
     Object.keys(this.filters).map(filter => options[filter] = this.filters[filter]);
 
-    this.rpc.call('filtertransactions', [options])
+    // this.rpc.call('filtertransactions', [options])
+    this.rpc.call('listtransactions')
       .subscribe((txResponse: Array<Object>) => {
         this.log.d(`countTransactions, number of transactions after filter: ${txResponse.length}`);
         this.txCount = txResponse.length;

@@ -34,7 +34,7 @@ export class StakinginfoComponent implements OnDestroy {
     ) {
 
     this.log.d(`constructor, started`);
-    this.rpcState.observe('getstakinginfo', 'percentyearreward')
+    this.rpcState.observe('getstakingstatus', 'percentyearreward')
     .takeWhile(() => !this.destroyed)
     .subscribe(
       success => {
@@ -44,7 +44,7 @@ export class StakinginfoComponent implements OnDestroy {
       },
       error => this.log.er('Constructor, percentyearreward error:' + error));
 
-    this.rpcState.observe('getstakinginfo', 'weight')
+    this.rpcState.observe('getstakingstatus', 'weight')
     .takeWhile(() => !this.destroyed)
     .subscribe(
       success => {
@@ -55,7 +55,7 @@ export class StakinginfoComponent implements OnDestroy {
       error => this.log.er('Constructor, weight error:' + error),
       () => this.log.d('state observe weight completed!'));
 
-    this.rpcState.observe('getstakinginfo', 'netstakeweight')
+    this.rpcState.observe('getstakingstatus', 'netstakeweight')
     .takeWhile(() => !this.destroyed)
     .subscribe(
       success => {
@@ -64,7 +64,7 @@ export class StakinginfoComponent implements OnDestroy {
       },
       error => this.log.er('Constructor, netstakeweight error:' + error));
 
-    this.rpcState.observe('getstakinginfo', 'moneysupply')
+    this.rpcState.observe('getstakingstatus', 'moneysupply')
     .takeWhile(() => !this.destroyed)
     .subscribe(
       success => {
@@ -74,7 +74,7 @@ export class StakinginfoComponent implements OnDestroy {
       },
       error => this.log.er('Constructor, moneysupply error:' + error));
 
-    this.rpcState.observe('getstakinginfo', 'expectedtime')
+    this.rpcState.observe('getstakingstatus', 'expectedtime')
     .takeWhile(() => !this.destroyed)
     .subscribe(
       success => {
