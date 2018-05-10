@@ -149,6 +149,7 @@ export class SendComponent implements OnInit {
 
   /** verifyAddress: calls RPC to validate it. */
   verifyAddress() {
+    console.trace('verifyAddress');
     if (!this.send.toAddress) {
       this.send.validAddress = undefined;
       this.send.isMine = undefined;
@@ -180,6 +181,7 @@ export class SendComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('this._rpcState.get(locked)', this._rpcState.get('locked'));
     if (this._rpcState.get('locked')) {
       // unlock wallet and send transaction
       this._modals.open('unlock', {forceOpen: true, timeout: 30, callback: this.openSendConfirmationModal.bind(this)});
@@ -191,8 +193,10 @@ export class SendComponent implements OnInit {
 
   /** Open Send Confirmation Modal */
   openSendConfirmationModal() {
-    const dialogRef = this.dialog.open(SendConfirmationModalComponent);
+    console.log("openSendConfirmationModal");
 
+    console.log('this.send',this.send);
+    const dialogRef = this.dialog.open(SendConfirmationModalComponent);
     let txt = `Do you really want to send ${this.send.amount} ${this.send.currency.toUpperCase()} to ${this.send.toAddress}?`;
     if (this.type === 'balanceTransfer') {
       txt = `Do you really want to transfer the following balance ${this.send.amount} ${this.send.currency.toUpperCase()}?`
@@ -269,6 +273,7 @@ export class SendComponent implements OnInit {
   */
 
   openLookup(): void {
+    console.log('openLookup');
     const d = this.dialog.open(AddressLookupComponent);
     const dc = d.componentInstance;
     dc.type = (this.type === 'balanceTransfer') ? 'receive' : 'send';
@@ -285,6 +290,7 @@ export class SendComponent implements OnInit {
     * @param label The label for the address.
     */
   selectAddress(copyObject: AddressLookUpCopy): void {
+    console.log(selectAddress);
     this.send.toAddress = copyObject.address;
     this.send.toLabel = copyObject.label;
     // this.addressLookup.hide();

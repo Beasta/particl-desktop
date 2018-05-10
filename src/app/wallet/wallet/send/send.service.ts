@@ -29,7 +29,7 @@ export class SendService {
   /* Sends a transaction */
   public sendTransaction(tx: TransactionBuilder) {
     tx.estimateFeeOnly = false;
-
+console.log("sendTransaction");
     this.send(tx)
       .subscribe(
         success => this.rpc_send_success(success, tx.toAddress, tx.amount),
@@ -37,6 +37,7 @@ export class SendService {
   }
 
   public getTransactionFee(tx: TransactionBuilder): Observable<any> {
+    console.log("getTransactionFee");
     tx.estimateFeeOnly = true;
     if (!tx.toAddress) {
       return new Observable((observer) => {
@@ -86,14 +87,13 @@ export class SendService {
   /**
    * Executes or estimates a transaction.
    * Estimates if estimateFeeOnly === true.
+   *
    */
   private send(tx: TransactionBuilder): Observable<any> {
-    return this._rpc.call('sendtypeto', [tx.input, tx.output, [{
-      address: tx.toAddress,
-      amount: tx.amount,
-      subfee: tx.subtractFeeFromAmount,
-      narr: tx.narration
-    }], tx.comment, tx.commentTo, tx.ringsize, 64, tx.estimateFeeOnly]);
+    // var something = this._rpc.call('sendtoaddress', ["",'D5xLhRVZ4Nj6nFfAo291gZr5rtj8GuHvcK', 10.53]);
+    const something = this._rpc.call('sendtoaddress', ['D5xLhRVZ4Nj6nFfAo291gZr5rtj8GuHvcK', 10.53]);
+    console.log('something',something);
+    return something;
   }
 
   private rpc_send_success(json: any, address: string, amount: number) {
@@ -102,7 +102,8 @@ export class SendService {
     // Truncate the address to 16 characters only
     const trimAddress = address.substring(0, 16) + '...';
     const txsId = json.substring(0, 45) + '...';
-    this.flashNotification.open(`Succesfully sent ${amount} PART to ${trimAddress}!\nTransaction id: ${txsId}`, 'warn');
+    console.log('txsId',json);
+    this.flashNotification.open(`Succesfully sent ${amount} DIVI to ${trimAddress}!\nTransaction id: ${txsId}`, 'warn');
   }
 
   private rpc_send_failed(message: string, address?: string, amount?: number) {

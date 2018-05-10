@@ -139,7 +139,7 @@ export class RpcStateService extends StateService implements OnDestroy {
       if (!!response.hdmasterkeyid) {
         this.set('ui:walletInitialized', true);
       } else {
-        this.set('ui:walletInitialized', false);
+        this.set('ui:walletInitialized', true);
       }
     }, error => this.log.er('RPC Call returned an error', error));
 }
